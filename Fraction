@@ -1,0 +1,101 @@
+#include<iostream>
+using namespace std;
+
+class Fraction {
+    // member functions
+public:
+    // Constructor with no arguments (default constructor)
+    Fraction() {
+        numerator = 2;
+        denominator = 5;
+    }
+
+    // Constructor with two arguments (overloaded constructor)
+    Fraction(int n, int d) {
+        numerator = n;
+        denominator = d;
+    }
+
+    // Function to set values of numerator and denominator
+    void setValues(int num, int denom) {
+        numerator = num;
+        denominator = denom;
+    }
+
+    // Function to print the fraction
+    void print() const {
+        cout << numerator << "/" << denominator << endl;
+    }
+
+    // Function to add two fractions
+    Fraction add(const Fraction& other) const {
+        Fraction result;
+        result.numerator = numerator * other.denominator + other.numerator * denominator;
+        result.denominator = denominator * other.denominator;
+        return result;
+    }
+
+    // Function to subtract two fractions
+    Fraction subtract(const Fraction& other) const {
+        Fraction result;
+        result.numerator = numerator * other.denominator - other.numerator * denominator;
+        result.denominator = denominator * other.denominator;
+        return result;
+    }
+
+    // Function to multiply two fractions
+    Fraction multiply(const Fraction& other) const {
+        Fraction result;
+        result.numerator = numerator * other.numerator;
+        result.denominator = denominator * other.denominator;
+        return result;
+    }
+
+    // Function to divide two fractions
+    Fraction divide(const Fraction& other) const {
+        Fraction result;
+        result.numerator = numerator * other.denominator;
+        result.denominator = denominator * other.numerator;
+        return result;
+    }
+
+private:
+    // data members
+    int numerator;
+    int denominator;
+};
+
+int main() {
+    // Task 2: Create a fraction f1 using the default constructor
+    Fraction f1;
+    f1.print();
+
+    // Create another fraction f2 using parameterized constructor
+    Fraction f2(3, 4);
+    f2.print();
+
+    // Task 3: Perform and display fraction arithmetic (addition, subtraction, multiplication, and division)
+    Fraction result;
+
+    // Add f1 and f2
+    result = f1.add(f2);
+    cout << "Addition: ";
+    result.print();
+
+    // Subtract f2 from f1
+    result = f1.subtract(f2);
+    cout << "Subtraction: ";
+    result.print();
+
+    // Multiply f1 and f2
+    result = f1.multiply(f2);
+    cout << "Multiplication: ";
+    result.print();
+
+    // Divide f1 by f2
+    result = f1.divide(f2);
+    cout << "Division: ";
+    result.print();
+
+    return 0;
+}
